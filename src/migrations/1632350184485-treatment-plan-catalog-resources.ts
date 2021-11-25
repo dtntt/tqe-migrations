@@ -9,7 +9,7 @@ export class treatmentPlanCatalogResources1632350184485 implements MigrationInte
             indices: [{name: 'idx_cTreatPlanRes01_subjects_Id', columnNames: ['id']}],
             columns: [
                 {name: 'id', type: 'int', isPrimary: true, isGenerated: true, generationStrategy: 'increment'},
-                {name: 'value', type: 'varchar', length: '45', isNullable: false}
+                {name: 'value', type: 'varchar', length: '150', isNullable: false}
             ]
         }), true);
         console.log('The table cTreatPlanRes01_subjects, was created to use as resources catalog in the treatment plan');
@@ -19,7 +19,9 @@ export class treatmentPlanCatalogResources1632350184485 implements MigrationInte
             indices: [{name: 'idx_cTreatPlanRes02_activities_Id', columnNames: ['id']}],
             columns: [
                 {name: 'id', type: 'int', isPrimary: true, isGenerated: true, generationStrategy: 'increment'},
-                {name: 'value', type: 'varchar', length: '45', isNullable: false},
+                {name: 'value', type: 'varchar', length: '150', isNullable: false},
+                {name: 'objective', type: 'varchar', length: '500', isNullable: true},
+                {name: 'application', type: 'varchar', length: '500', isNullable: true},
                 {name: 'subject_id', type: 'int'}
             ]
         }), true);
@@ -40,7 +42,7 @@ export class treatmentPlanCatalogResources1632350184485 implements MigrationInte
             indices: [{name: 'idx_cTreatPlanRes04_file_types_Id', columnNames: ['id']}],
             columns: [
                 {name: 'id', type: 'int', isPrimary: true, isGenerated: true, generationStrategy: 'increment'},
-                {name: 'value', type: 'varchar', length: '45', isNullable: false},
+                {name: 'value', type: 'varchar', length: '150', isNullable: false},
             ]
         }), true);
         console.log("The table cTreatPlanRes04_file_types was created, to use as resources catalog in the treatment plan");
@@ -50,7 +52,7 @@ export class treatmentPlanCatalogResources1632350184485 implements MigrationInte
             indices: [{name: 'idx_cTreatPlanRes03_files_Id', columnNames: ['id']}],
             columns: [
                 {name: 'id', type: 'int', isPrimary: true, isGenerated: true, generationStrategy: 'increment'},
-                {name: 'value', type: 'varchar', length: '45', isNullable: false},
+                {name: 'value', type: 'varchar', length: '150', isNullable: false},
                 {name: 'activity_id', type: 'int'},
                 {name: 'file_type_id', type: 'int'}
             ]

@@ -9,7 +9,7 @@ export class treatmentPlanCatalogTechniques1632593175470 implements MigrationInt
             indices: [{name: 'idx_cTreatPlanTech01_classifications_Id', columnNames: ['id']}],
             columns: [
                 {name: 'id', type: 'int', isPrimary: true, isGenerated: true, generationStrategy: 'increment'},
-                {name: 'value', type: 'varchar', length: '45', isNullable: false}
+                {name: 'value', type: 'varchar', length: '150', isNullable: false}
             ]
         }), true);
         console.log('The table cTreatPlanTech01_classifications, was created to use as techniques catalog in the treatment plan');
@@ -19,10 +19,11 @@ export class treatmentPlanCatalogTechniques1632593175470 implements MigrationInt
             indices: [{name: 'idx_cTreatPlanTech02_techniques_Id', columnNames: ['id']}],
             columns: [
                 {name: 'id', type: 'int', isPrimary: true, isGenerated: true, generationStrategy: 'increment'},
-                {name: 'value', type: 'varchar', length: '45', isNullable: false},
-                {name: 'objective', type: 'varchar', length: '150', isNullable: true},
-                {name: 'application', type: 'varchar', length: '150', isNullable: true},
-                {name: 'sessions_length', type: 'int', isNullable: true},
+                {name: 'value', type: 'varchar', length: '150', isNullable: false},
+                {name: 'objective', type: 'varchar', length: '500', isNullable: true},
+                {name: 'application', type: 'varchar', length: '500', isNullable: true},
+                {name: 'min_sessions_length', type: 'int', isNullable: true},
+                {name: 'max_sessions_length', type: 'int', isNullable: true},
                 {name: 'classification_id', type: 'int'}
             ]
         }), true);
@@ -36,17 +37,18 @@ export class treatmentPlanCatalogTechniques1632593175470 implements MigrationInt
                 name: 'idx_cTreatPlanTech02_techniques_Classification_id'
             })
         );
-        console.log('The table cTreatPlanRes04_file_types was created, to use as technique catalog in the treatment plan');
+        console.log('The table cTreatPlanTech02_techniques was created, to use as technique catalog in the treatment plan');
 
         await queryRunner.createTable(new Table({
             name: 'cTreatPlanTech03_variants',
             indices: [{name: 'idx_cTreatPlanTech03_variants_Id', columnNames: ['id']}],
             columns: [
                 {name: 'id', type: 'int', isPrimary: true, isGenerated: true, generationStrategy: 'increment'},
-                {name: 'value', type: 'varchar', length: '45', isNullable: false},
-                {name: 'objective', type: 'varchar', length: '150', isNullable: true},
-                {name: 'application', type: 'varchar', length: '150', isNullable: true},
-                {name: 'sessions_length', type: 'int', isNullable: true},
+                {name: 'value', type: 'varchar', length: '500', isNullable: false},
+                {name: 'objective', type: 'varchar', length: '500', isNullable: true},
+                {name: 'application', type: 'varchar', length: '500', isNullable: true},
+                {name: 'min_sessions_length', type: 'int', isNullable: true},
+                {name: 'max_sessions_length', type: 'int', isNullable: true},
                 {name: 'technique_id', type: 'int'},
             ]
         }), true);
@@ -55,9 +57,9 @@ export class treatmentPlanCatalogTechniques1632593175470 implements MigrationInt
             new TableForeignKey({
                 columnNames: ['technique_id'],
                 referencedColumnNames: ['id'],
-                referencedTableName: 'cTreatPlanRes04_file_types',
+                referencedTableName: 'cTreatPlanTech02_techniques',
                 onDelete: 'CASCADE',
-                name: 'idx_cTreatPlanRes02_activities_Technique_id'
+                name: 'idx_cTreatPlanTech03_variants_Technique_id'
             })
         )
         console.log("The table cTreatPlanTech03_variants was created, to use as technique catalog in the treatment plan");
