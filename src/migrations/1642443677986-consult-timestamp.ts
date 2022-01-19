@@ -15,8 +15,16 @@ export class consultTimestamp1642443677986 implements MigrationInterface {
                            type: 'timestamp',
                            isNullable: false,
                            isGenerated: true,
-                           //this is important to prevent auto update, and to fill earlier registers with an unspecified date
-                           default: 0
+                           //this is important to fill earlier registers with an unspecified date
+                           default: 0,
+                       }));
+                       await queryRunner.changeColumn(this.consultTable, this.createdAtCol, new TableColumn({
+                           name: this.createdAtCol,
+                           type: 'timestamp',
+                           isNullable: false,
+                           isGenerated: true,
+                           //this is important to prevent auto update
+                           default: 'CURRENT_TIMESTAMP',
                        }));
                    }
                 })
